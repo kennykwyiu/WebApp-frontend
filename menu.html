@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>menu</title>
+    <style>
+        header {
+            display: flex;
+            font-size: 1.5rem;
+            align-items: center;
+        }
+
+        header img {
+            height: 100px;
+        }
+
+        header div {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        #foodList {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .food {
+            border: 1px solid darkslategray;
+            border-radius: 1rem;
+            width: fit-content;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .food img {
+            width: 200px;
+            height: 200px;
+        }
+
+        .food-name {
+            margin: 1rem;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .food-price {
+            margin: 1rem;
+            margin-top: 0;
+        }
+
+
+    </style>
+</head>
+<body>
+<header>
+    <img src="logo.png">
+    <div>ABC Restaurant</div>
+</header>
+<div id="typeList">
+    <button onclick="showMainDish()">Main Dish</button>
+    <button onclick="showDrink()">Drink</button>
+    <button onclick="showSnack()">Snack</button>
+    <button onclick="showDessert()">Dessert</button>
+</div>
+<div id="foodList">
+    <div class="food">
+        <img alt="" src="https://picsum.photos/seed/steak/200/200">
+        <div class="food-name">Classic Steak</div>
+        <div class="food-price">$10</div>
+    </div>
+    <div class="food">
+        <img alt="" src="https://picsum.photos/seed/salad/200/200">
+        <div class="food-name">Chicken Salad</div>
+    </div>
+</div>
+
+<script>
+    let foodTemplate = foodList.querySelector(".food");
+    console.log(foodTemplate)
+
+    showMainDish()
+
+    function showMainDish() {
+        foodList.textContent = ""
+        showFood({
+            id: 1,
+            name: "Classic Steak",
+            price: 290
+        })
+        showFood({
+            id: 2,
+            name: "Chicken Salad",
+            price: 190
+        })
+    }
+
+    function showDrink() {
+        foodList.textContent = ""
+        showFood({
+            id: 3,
+            name: "Coke",
+            price: 30
+        })
+        showFood({
+            id: 4,
+            name: "Juice",
+            price: 40
+        })
+    }
+
+    function showSnack() {
+        foodList.textContent = ""
+        showFood({
+            id: 5,
+            name: "Chips",
+            price: 120
+        })
+        showFood({
+            id: 6,
+            name: "Candy",
+            price: 70
+        })
+    }
+
+    function showDessert() {
+        foodList.textContent = ""
+        showFood({
+            id: 7,
+            name: "Cake",
+            price: 150
+        })
+        showFood({
+            id: 8,
+            name: "Ice Cream",
+            price: 100
+        })
+    }
+
+    function showFood(data) {
+
+        let food = foodTemplate.cloneNode(true);
+
+        food.querySelector("img").src = `https://picsum.photos/seed/${data.id}/200/200`
+        food.querySelector(".food-name").textContent = data.name
+        food.querySelector(".food-price").textContent = "$" + data.price
+
+        foodList.appendChild(food)
+
+    }
+
+</script>
+
+</body>
+</html>
